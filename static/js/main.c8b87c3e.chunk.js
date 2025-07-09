@@ -6264,6 +6264,7 @@
                         model: "blueprint3D-assets/models/glb/ci600maner.glb",
                         type: "1",
                         stackontop: !0,
+                        shopifyId: "987654321",
                         morph: [{
                     }, {
                         name: "DESK-ECUL24C24E",
