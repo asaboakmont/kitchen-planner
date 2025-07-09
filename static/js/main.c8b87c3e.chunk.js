@@ -23626,7 +23626,33 @@
                                                         })
                                                     },
                                                     onProductClicked: function(t) {
-                                                        console.log(t), e.handleProductClicked(t)
+                                                        console.log(t);  // logs the clicked item
+
+                                                        // Assuming `t` is your product object
+                                                        if (t.variantId) {
+                                                          // Mark this item as selected (or toggle selection)
+                                                          t.isSelected = !t.isSelected;
+                                                        
+                                                          // Optionally keep track of selected items globally
+                                                          if (!window.kitchenPlannerItems) window.kitchenPlannerItems = [];
+                                                        
+                                                          if (t.isSelected) {
+                                                            // Add to selected if not already there
+                                                            if (!window.kitchenPlannerItems.find(item => item.variantId === t.variantId)) {
+                                                              window.kitchenPlannerItems.push(t);
+                                                            }
+                                                          } else {
+                                                            // Remove from selected if deselected
+                                                            window.kitchenPlannerItems = window.kitchenPlannerItems.filter(item => item.variantId !== t.variantId);
+                                                          }
+                                                        
+                                                          console.log("Selected items:", window.kitchenPlannerItems);
+                                                        } else {
+                                                          console.warn("No variantId found on selected item!");
+                                                        }
+                                                        
+                                                        e.handleProductClicked(t); // existing handler, keep it
+                                                        
                                                     }
                                                 })
                                             }), Object(v.jsx)("div", {
