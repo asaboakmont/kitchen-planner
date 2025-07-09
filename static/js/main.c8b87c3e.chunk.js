@@ -23655,6 +23655,20 @@
                                                         
                                                     }
                                                 })
+                                                console.log(t);
+                                                e.handleProductClicked(t);
+                                                
+                                                // Example: update global selected items array
+                                                window.kitchenPlannerItems = window.kitchenPlannerItems || [];
+                                                
+                                                // If you want to track the selected product, push it or replace the array
+                                                // Assuming `t` is the selected product object and has a variantId
+                                                const variantId = t.variantId || t.shopifyId || null;
+                                                if (variantId) {
+                                                  // For simplicity, replace the array with just the last selected item (or adjust to your logic)
+                                                  window.kitchenPlannerItems = [{ variantId }];
+                                                  console.log("Updated selected items:", window.kitchenPlannerItems);
+                                                }
                                             }), Object(v.jsx)("div", {
                                                 style: {
                                                     position: "absolute",
