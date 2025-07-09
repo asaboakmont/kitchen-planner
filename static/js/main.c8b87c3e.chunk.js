@@ -3599,6 +3599,7 @@
                                                         }), m, n, i, s);
                                                     console.log(m, n, i, s), console.log("item line 185", h), h.initObject(m, n, i, s), console.log("item 187", h), d.items.push(h), d.add(h), o && d.itemLoadedCallbacks.forEach((function(e) {
                                                         return "function" === typeof e && e(h)
+                                                        h.shopifyId = l?.shopifyId || null;
                                                     })), e(h)
                                                 }), void 0, (function() {
                                                     e(null)
