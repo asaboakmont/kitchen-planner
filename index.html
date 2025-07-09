@@ -27,6 +27,27 @@
 
 
   <body style="margin: 0; height: 100vh; overflow: hidden">
+<button id="add-to-cart-btn">Add to Cart</button>
+
+<script>
+  document.getElementById("add-to-cart-btn").addEventListener("click", function () {
+    // Replace with your actual way to get the selected item object
+    const selectedItem = window.selectedItem || null;
+
+    if (!selectedItem || !selectedItem.variantId) {
+      alert("Te rugăm să selectezi un modul cu un ID Shopify valid.");
+      return;
+    }
+
+    const variantId = selectedItem.variantId;
+    const quantity = 1;
+    const cartUrl = `https://asab-design.ro/cart/${variantId}:${quantity}`;
+
+    console.log("Adding to cart variantId:", variantId);
+    window.location.href = cartUrl;
+  });
+</script>
+    
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root" style="height: 100%"></div>
 
@@ -190,26 +211,5 @@
     <!-- React App Scripts -->
     <script src="static/js/2.50441937.chunk.js"></script>
     <script src="static/js/main.c8b87c3e.chunk.js"></script>
-    
-    <button id="add-to-cart-btn">Add to Cart</button>
-
-<script>
-  document.getElementById("add-to-cart-btn").addEventListener("click", function () {
-    // Replace with your actual way to get the selected item object
-    const selectedItem = window.selectedItem || null;
-
-    if (!selectedItem || !selectedItem.variantId) {
-      alert("Te rugăm să selectezi un modul cu un ID Shopify valid.");
-      return;
-    }
-
-    const variantId = selectedItem.variantId;
-    const quantity = 1;
-    const cartUrl = `https://asab-design.ro/cart/${variantId}:${quantity}`;
-
-    console.log("Adding to cart variantId:", variantId);
-    window.location.href = cartUrl;
-  });
-</script>
   </body>
 </html>
