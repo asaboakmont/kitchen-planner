@@ -28,45 +28,50 @@
 
   <body style="margin: 0; height: 100vh; overflow: hidden">
     
-<button id="addToCartFromIframe">Add to Cart</button>
+<button id="addToCartBtn">Add Selected Items to Cart</button>
     
 <script>
- let selectedItemsFromIframe = [];
+let selectedItems = [];
 
-  // 🔌 Listen for messages from iframe
-  window.addEventListener("message", function (event) {
-    // ✅ Make sure this is your Netlify planner origin
-    if (!event.origin.includes("configbucatarii.netlify.app")) return;
+  // Listen for selection changes (e.g., from your app logic)
+  // For demo, assume your app calls this function to update selected items:
+  function updateSelectedItems(items) {
+    selectedItems = items;
+    console.log("Selected items updated:", selectedItems);
+  }
 
-    if (event.data && event.data.type === "kitchenPlannerSelection") {
-      selectedItemsFromIframe = event.data.items || [];
-      console.log("✅ Received selected items:", selectedItemsFromIframe);
-    }
-  });
-
-  // 🛒 Add to cart click
-  document.getElementById("addToCartFromIframe").addEventListener("click", function () {
-    if (!Array.isArray(selectedItemsFromIframe) || selectedItemsFromIframe.length === 0) {
-      alert("Please select at least one item.");
+  // Add to cart button click handler
+  document.getElementById("addToCartBtn").addEventListener("click", () => {
+    if (!Array.isArray(selectedItems) || selectedItems.length === 0) {
+      alert("Please select at least one product.");
       return;
     }
 
-    // Build Shopify cart format: variantId:1,variantId:1
-    const cartItems = selectedItemsFromIframe
+    // Build cart URL params like variantId:quantity
+    const cartParams = selectedItems
       .filter(item => item.variantId)
-      .map(item => `${item.variantId}:1`)
+      .map(item => `${item.variantId}:1`)  // default quantity = 1
       .join(",");
 
-    if (!cartItems) {
+    if (!cartParams) {
       alert("No valid variant IDs found.");
       return;
     }
 
-    // ✅ Final redirect to Shopify cart
-    const cartUrl = `https://asab-design.ro/cart/${cartItems}`;
-    console.log("➡️ Redirecting to cart URL:", cartUrl);
+    // Assuming your cart page URL is /cart/ followed by variants
+    const cartUrl = `/cart/${cartParams}`;
+    console.log("Redirecting to cart URL:", cartUrl);
+
+    // Redirect to the cart URL
     window.location.href = cartUrl;
   });
+
+  // Example: simulate setting selected products after user selects them
+  // Call this function with your actual selected products in your app
+  updateSelectedItems([
+    { variantId: "55351041065339" },
+    { variantId: "15047945191803" }
+  ]);
 </script>
   
 </script>
