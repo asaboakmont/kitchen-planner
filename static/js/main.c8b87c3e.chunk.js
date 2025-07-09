@@ -23627,52 +23627,34 @@
                                                     },
                                                     onProductClicked: function(t) {
                                                         console.log(t);  // logs the clicked item
-
-                                                        // Assuming `t` is your product object
+                                                        // Assuming t is your product object on click/select event
                                                         if (t.variantId) {
-                                                          // Mark this item as selected (or toggle selection)
+                                                          // Toggle selection on the product object
                                                           t.isSelected = !t.isSelected;
                                                         
-                                                          // Optionally keep track of selected items globally
+                                                          // Initialize global selected items array if missing
                                                           if (!window.kitchenPlannerItems) window.kitchenPlannerItems = [];
                                                         
                                                           if (t.isSelected) {
-                                                            // Add to selected if not already there
+                                                            // Add product to selected list if not already present
                                                             if (!window.kitchenPlannerItems.find(item => item.variantId === t.variantId)) {
                                                               window.kitchenPlannerItems.push(t);
+                                                              console.log("Added product to selected items:", t.variantId);
                                                             }
                                                           } else {
-                                                            // Remove from selected if deselected
+                                                            // Remove product from selected list if deselected
                                                             window.kitchenPlannerItems = window.kitchenPlannerItems.filter(item => item.variantId !== t.variantId);
+                                                            console.log("Removed product from selected items:", t.variantId);
                                                           }
                                                         
-                                                          console.log("Selected items:", window.kitchenPlannerItems);
+                                                          console.log("Current selected items:", window.kitchenPlannerItems);
                                                         } else {
                                                           console.warn("No variantId found on selected item!");
                                                         }
                                                         
-                                                        e.handleProductClicked(t); // existing handler, keep it
-                                                        
-                                                    }
-                                                })
-                                                console.log(t);
-                                                e.handleProductClicked(t);
-                                                
-                                                window.kitchenPlannerItems = window.kitchenPlannerItems || [];
-                                                
-                                                const variantId = t.variantId || t.shopifyId || null;
-                                                if (variantId) {
-                                                  // Check if product already exists in selected items
-                                                  const exists = window.kitchenPlannerItems.find(item => item.variantId === variantId);
-                                                
-                                                  if (!exists) {
-                                                    // Add new selected product
-                                                    window.kitchenPlannerItems.push({ variantId });
-                                                    console.log("Added product to selected items:", variantId);
-                                                  } else {
-                                                    console.log("Product already selected:", variantId);
-                                                  }
-                                                }
+                                                        // Call the existing product click handler only once
+                                                        e.handleProductClicked(t);
+
 
                                             }), Object(v.jsx)("div", {
                                                 style: {
