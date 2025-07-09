@@ -23708,8 +23708,8 @@
                                                   ]
                                                 })
                                               ]
-                                            })
-                                            }), Object(v.jsx)(Mt, {
+                                            }),
+                                                 Object(v.jsx)(Mt, {
                                                 info: l,
                                                 onDuplicateProduct: this.handleDuplicateProduct,
                                                 onDeleteActiveProduct: function() {
