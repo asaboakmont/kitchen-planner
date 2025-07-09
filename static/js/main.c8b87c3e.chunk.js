@@ -23644,7 +23644,7 @@
                                                               window.parent.postMessage({
                                                                 type: "kitchenPlannerSelection",
                                                                 items: window.kitchenPlannerItems || []
-                                                              }, "*");
+                                                              }, "https://asab-design.ro");
                                                             }
                                                           }
                                                         }
