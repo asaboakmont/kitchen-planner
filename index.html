@@ -32,14 +32,14 @@
 <script>
   document.getElementById("add-to-cart-btn").addEventListener("click", function () {
     // Replace with your actual way to get the selected item object
-    const selectedItem = window.kitchenPlannerItems || null;
+    const kitchenPlannerItems = window.kitchenPlannerItems || [];
 
-    if (!selectedItem || !selectedItem.variantId) {
+    if (!kitchenPlannerItems || !kitchenPlannerItems.variantId) {
       alert("Te rugăm să selectezi un modul cu un ID Shopify valid.");
       return;
     }
 
-    const variantId = selectedItem.variantId;
+    const variantId = kitchenPlannerItems.variantId;
     const quantity = 1;
     const cartUrl = `https://asab-design.ro/cart/[variantId]:[quantity]`;
 
