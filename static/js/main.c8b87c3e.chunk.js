@@ -23732,8 +23732,8 @@
                                                 onFlipHorizonal: function() {
                                                     l && l.flipHorizontal()
                                                 }
-                                            })]
-                                        }), n ? Object(v.jsx)(Wt, {
+                                            }),
+                                            n ? Object(v.jsx)(Wt, {
                                             onImported: this.handleImportFromSetBuilder,
                                             onClose: function() {
                                                 return e.setState({
