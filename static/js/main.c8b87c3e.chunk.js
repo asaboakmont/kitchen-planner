@@ -23640,6 +23640,12 @@
                                                             console.log("Added product to selected items:", variantId);
                                                           } else {
                                                             console.log("Product already selected:", variantId);
+                                                              if (window.parent) {
+                                                              window.parent.postMessage({
+                                                                type: "kitchenPlannerSelection",
+                                                                items: window.kitchenPlannerItems || []
+                                                              }, "*");
+                                                            }
                                                           }
                                                         }
                                                     }
