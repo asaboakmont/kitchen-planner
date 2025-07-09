@@ -3598,6 +3598,7 @@
                                                             morphUVs: c
                                                         }), m, n, i, s);
                                                     console.log(m, n, i, s), console.log("item line 185", h), h.initObject(m, n, i, s), console.log("item 187", h), d.items.push(h), d.add(h), o && d.itemLoadedCallbacks.forEach((function(e) {
+                                                        window.kitchenPlannerItems = d.items;
                                                         return "function" === typeof e && e(h)
                                                         h.shopifyId = l?.shopifyId || null;
                                                     })), e(h)
