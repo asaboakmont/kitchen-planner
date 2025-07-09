@@ -23668,32 +23668,47 @@
                                                 })
                                             }),
                                             Object(v.jsxs)("div", {
-                                            className: "right-container ".concat(l ? "opened" : ""),
-                                            children: [Object(v.jsxs)("div", {
-                                                className: "product-info-container",
-                                                children: [Object(v.jsx)(zt, {
-                                                    info: l,
-                                                    onMorphChanged: function(t, a) {
-                                                        e.refBp3d.setMorph(t, a), e.refBp3d.update(), e.forceUpdate()
-                                                    },
-                                                    onOpenedChanged: function(t) {
-                                                        "function" === typeof l.setOpened && l.setOpened(t), l.groupParent && "function" === typeof l.groupParent.setOpened && l.groupParent.setOpened(t), e.forceUpdate()
-                                                    },
-                                                    onGroupItemChanged: function(t, a) {
-                                                        e.refBp3d.replaceSetItem(t, a)
-                                                    }
-                                                }), Object(v.jsx)(It, {
-                                                    info: l,
-                                                    onMaterialChange: function(t, a) {
-                                                        e.refBp3d && "function" === typeof e.refBp3d.updateMaterial && e.refBp3d.updateMaterial(t, a)
-                                                    },
-                                                    onStyleChange: function(t, a) {
-                                                        e.refBp3d && "function" === typeof e.refBp3d.updateMaterial && e.refBp3d.updateStyle(t, a)
-                                                    },
-                                                    onBlockCountChanged: function(t) {
-                                                        e.refBp3d && "function" === typeof e.refBp3d.updateBlockCount && e.refBp3d.updateBlockCount(t)
-                                                    }
-                                                })]
+                                              className: "right-container ".concat(l ? "opened" : ""),
+                                              children: [
+                                                Object(v.jsxs)("div", {
+                                                  className: "product-info-container",
+                                                  children: [
+                                                    Object(v.jsx)(zt, {
+                                                      info: l,
+                                                      onMorphChanged: function(t, a) {
+                                                        e.refBp3d.setMorph(t, a);
+                                                        e.refBp3d.update();
+                                                        e.forceUpdate();
+                                                      },
+                                                      onOpenedChanged: function(t) {
+                                                        if (typeof l.setOpened === "function") l.setOpened(t);
+                                                        if (l.groupParent && typeof l.groupParent.setOpened === "function")
+                                                          l.groupParent.setOpened(t);
+                                                        e.forceUpdate();
+                                                      },
+                                                      onGroupItemChanged: function(t, a) {
+                                                        e.refBp3d.replaceSetItem(t, a);
+                                                      }
+                                                    }),
+                                                    Object(v.jsx)(It, {
+                                                      info: l,
+                                                      onMaterialChange: function(t, a) {
+                                                        if (e.refBp3d && typeof e.refBp3d.updateMaterial === "function")
+                                                          e.refBp3d.updateMaterial(t, a);
+                                                      },
+                                                      onStyleChange: function(t, a) {
+                                                        if (e.refBp3d && typeof e.refBp3d.updateMaterial === "function")
+                                                          e.refBp3d.updateStyle(t, a);
+                                                      },
+                                                      onBlockCountChanged: function(t) {
+                                                        if (e.refBp3d && typeof e.refBp3d.updateBlockCount === "function")
+                                                          e.refBp3d.updateBlockCount(t);
+                                                      }
+                                                    })
+                                                  ]
+                                                })
+                                              ]
+                                            })
                                             }), Object(v.jsx)(Mt, {
                                                 info: l,
                                                 onDuplicateProduct: this.handleDuplicateProduct,
