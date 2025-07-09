@@ -23666,8 +23666,8 @@
                                                 children: Object(v.jsx)("span", {
                                                     children: "loading..."
                                                 })
-                                            })
-                                        }), Object(v.jsxs)("div", {
+                                            }),
+                                            Object(v.jsxs)("div", {
                                             className: "right-container ".concat(l ? "opened" : ""),
                                             children: [Object(v.jsxs)("div", {
                                                 className: "product-info-container",
