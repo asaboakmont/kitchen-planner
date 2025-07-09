@@ -51,30 +51,14 @@
 
 <script>
   document.getElementById('add-to-cart-btn').addEventListener('click', function () {
-    const variantId = YOUR_VARIANT_ID; // replace with actual Shopify variant ID
+    const variantId = "YOUR_VARIANT_ID_HERE";  // ← Replace this with your real variant ID as a string
+    const shopifyDomain = "asab-design.ro";    // ← Your Shopify domain
+    const quantity = 1;                         // Change if you want to allow quantity selection
 
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id: variantId,
-        quantity: 1,
-        properties: {
-          RoomConfig: JSON.stringify({
-            walls: [...], // Example data from your Three.js planner
-            furniture: [...]
-          })
-        }
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Item added:', data);
-      window.location.href = '/cart'; // Optional: redirect to cart
-    })
-    .catch(error => console.error('Error:', error));
+    const shopifyCartUrl = `https://${shopifyDomain}/cart/${variantId}:${quantity}`;
+
+    // Redirect parent window (Shopify store) to cart page with product added
+    window.top.location.href = shopifyCartUrl;
   });
 </script>
 
