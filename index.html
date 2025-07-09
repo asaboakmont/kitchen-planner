@@ -25,6 +25,29 @@
   </head>
 
   <button id="add-to-cart-btn" style="background-color: black; color: white;">ADAUGA IN COS BUCATARIA TA</button>
+      // 👉 Replace this with your actual selected item from the planner
+  <script>
+  document.getElementById('add-to-cart-btn').addEventListener('click', function () {
+    // 👉 Replace this with your actual selected item from the planner
+    const selectedStyle = ia.styles[0]; // Update if you're tracking selection
+
+    // 👉 This should be the Shopify Variant ID stored in the product config
+    const variantId = selectedStyle.shopifyId;
+
+    if (!variantId) {
+      alert("Produsul selectat nu are un ID Shopify definit.");
+      return;
+    }
+
+    const quantity = 1; // Or make dynamic from planner config
+
+    // 👉 Replace with your real Shopify store URL
+    const shopifyCartUrl = `https://asab-design.ro/cart/${variantId}:${quantity}`;
+
+    // 👉 Redirect to Shopify cart with selected product
+    window.location.href = shopifyCartUrl;
+  });
+</script>
 
 <script>
   document.getElementById('add-to-cart-btn').addEventListener('click', function () {
