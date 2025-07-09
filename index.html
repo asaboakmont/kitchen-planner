@@ -41,7 +41,7 @@
 
     const variantId = selectedItem.variantId;
     const quantity = 1;
-    const cartUrl = `https://asab-design.ro/cart/${variantId}:${quantity}`;
+    const cartUrl = `https://asab-design.ro/cart/$[variantId]:$[quantity]`;
 
     console.log("Adding to cart variantId:", variantId);
     window.location.href = cartUrl;
