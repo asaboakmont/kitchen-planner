@@ -23740,7 +23740,7 @@
                                                     showImportSetModal: !1
                                                 })
                                             }
-                                        }) : null]
+                                        }) : null
                                     })
                                 })
                             })
