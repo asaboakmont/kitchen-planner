@@ -6265,7 +6265,7 @@
                         model: "blueprint3D-assets/models/glb/ci600maner.glb",
                         type: "1",
                         stackontop: !0,
-                        variantId: "55351041294715",
+                        variantId: "55351041065339",
                         morph: [{
                     }, {
                         name: "DESK-ECUL24C24E",
