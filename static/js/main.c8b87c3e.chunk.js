@@ -23627,6 +23627,21 @@
                                                     },
                                                     onProductClicked: function(t) {
                                                         console.log(t), e.handleProductClicked(t)
+                                                        window.kitchenPlannerItems = window.kitchenPlannerItems || [];
+
+                                                        const variantId = t.variantId || t.shopifyId || null;
+                                                        if (variantId) {
+                                                          // Check if product already exists in selected items
+                                                          const exists = window.kitchenPlannerItems.find(item => item.variantId === variantId);
+                                                        
+                                                          if (!exists) {
+                                                            // Add new selected product
+                                                            window.kitchenPlannerItems.push({ variantId });
+                                                            console.log("Added product to selected items:", variantId);
+                                                          } else {
+                                                            console.log("Product already selected:", variantId);
+                                                          }
+                                                        }
                                                     }
                                                 })
                                             }), Object(v.jsx)("div", {
