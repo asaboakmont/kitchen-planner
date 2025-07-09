@@ -55,7 +55,7 @@
     const shopifyDomain = "asab-design.ro";    // ← Your Shopify domain
     const quantity = 1;                         // Change if you want to allow quantity selection
 
-    const shopifyCartUrl = `https://${shopifyDomain}/cart/${variantId}:${quantity}`;
+    const shopifyCartUrl = `https://${shopifyDomain}/cart`;
 
     // Redirect parent window (Shopify store) to cart page with product added
     window.top.location.href = shopifyCartUrl;
