@@ -31,11 +31,11 @@
 <button id="addToCartFromIframe">Add to Cart</button>
     
 <script>
-<script>
-  let selectedItemsFromIframe = [];
+ let selectedItemsFromIframe = [];
 
-  // Listen for messages from iframe (Netlify site)
+  // 🔌 Listen for messages from iframe
   window.addEventListener("message", function (event) {
+    // ✅ Make sure this is your Netlify planner origin
     if (!event.origin.includes("configbucatarii.netlify.app")) return;
 
     if (event.data && event.data.type === "kitchenPlannerSelection") {
@@ -44,25 +44,27 @@
     }
   });
 
-  // Add to Cart Button Handler
+  // 🛒 Add to cart click
   document.getElementById("addToCartFromIframe").addEventListener("click", function () {
     if (!Array.isArray(selectedItemsFromIframe) || selectedItemsFromIframe.length === 0) {
-      alert("Te rugăm să selectezi un modul cu un ID Shopify valid.");
+      alert("Please select at least one item.");
       return;
     }
 
-    // Check if all items have a variantId
-    const validItems = selectedItemsFromIframe.filter(item => item.variantId);
-    if (validItems.length === 0) {
-      alert("Te rugăm să selectezi un modul cu un ID Shopify valid.");
+    // Build Shopify cart format: variantId:1,variantId:1
+    const cartItems = selectedItemsFromIframe
+      .filter(item => item.variantId)
+      .map(item => `${item.variantId}:1`)
+      .join(",");
+
+    if (!cartItems) {
+      alert("No valid variant IDs found.");
       return;
     }
 
-    // Build the Shopify cart URL
-    const cartItems = validItems.map(item => `${item.variantId}:1`).join(',');
+    // ✅ Final redirect to Shopify cart
     const cartUrl = `https://asab-design.ro/cart/${cartItems}`;
-
-    console.log("🛒 Redirecting to Shopify cart:", cartUrl);
+    console.log("➡️ Redirecting to cart URL:", cartUrl);
     window.location.href = cartUrl;
   });
 </script>
