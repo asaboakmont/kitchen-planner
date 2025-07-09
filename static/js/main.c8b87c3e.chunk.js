@@ -23627,22 +23627,17 @@
                                                     },
                                                     onProductClicked: function(t) {
                                                         console.log(t);  // logs the clicked item
-                                                        // Assuming t is your product object on click/select event
-                                                        if (t.variantId) {
-                                                          // Toggle selection on the product object
+                                                       if (t.variantId) {
                                                           t.isSelected = !t.isSelected;
                                                         
-                                                          // Initialize global selected items array if missing
                                                           if (!window.kitchenPlannerItems) window.kitchenPlannerItems = [];
                                                         
                                                           if (t.isSelected) {
-                                                            // Add product to selected list if not already present
                                                             if (!window.kitchenPlannerItems.find(item => item.variantId === t.variantId)) {
                                                               window.kitchenPlannerItems.push(t);
                                                               console.log("Added product to selected items:", t.variantId);
                                                             }
                                                           } else {
-                                                            // Remove product from selected list if deselected
                                                             window.kitchenPlannerItems = window.kitchenPlannerItems.filter(item => item.variantId !== t.variantId);
                                                             console.log("Removed product from selected items:", t.variantId);
                                                           }
@@ -23652,7 +23647,6 @@
                                                           console.warn("No variantId found on selected item!");
                                                         }
                                                         
-                                                        // Call the existing product click handler only once
                                                         e.handleProductClicked(t);
 
 
