@@ -27,17 +27,19 @@
   <button id="add-to-cart-btn" style="background-color: black; color: white;">ADAUGA IN COS BUCATARIA TA</button>
   
   <script>
-document.getElementById("add-to-cart-btn").addEventListener("click", function() {
-  const selected = window.editor?.selected;
+document.getElementById("add-to-cart-btn").addEventListener("click", function () {
+  const items = window.kitchenPlannerItems || [];
 
-  if (!selected || !selected.variantId) {
+  const selectedItems = items.filter(item => item?.variantId);
+
+  if (selectedItems.length === 0) {
     alert("Te rugăm să selectezi un modul cu un ID Shopify valid.");
     return;
   }
 
-  const variantId = selected.variantId;
-  const quantity = 1;
-  const cartUrl = `https://asab-design.ro/cart/${variantId}:${quantity}`;
+  const shopifyBase = "asab-design.ro";
+  const cartItems = selectedItems.map(item => `${item.variantId}:1`).join(',');
+  const cartUrl = `https://${shopifyBase}/cart/${cartItems}`;
 
   window.top.location.href = cartUrl;
 });
