@@ -23626,31 +23626,27 @@
                                                         })
                                                     },
                                                     onProductClicked: function(t) {
-                                                        console.log(t);  // logs the clicked item
-                                                       if (t.variantId) {
-                                                          t.isSelected = !t.isSelected;
-                                                        
-                                                          if (!window.kitchenPlannerItems) window.kitchenPlannerItems = [];
-                                                        
-                                                          if (t.isSelected) {
-                                                            if (!window.kitchenPlannerItems.find(item => item.variantId === t.variantId)) {
-                                                              window.kitchenPlannerItems.push(t);
-                                                              console.log("Added product to selected items:", t.variantId);
-                                                            }
-                                                          } else {
-                                                            window.kitchenPlannerItems = window.kitchenPlannerItems.filter(item => item.variantId !== t.variantId);
-                                                            console.log("Removed product from selected items:", t.variantId);
-                                                          }
-                                                        
-                                                          console.log("Current selected items:", window.kitchenPlannerItems);
-                                                        } else {
-                                                          console.warn("No variantId found on selected item!");
-                                                        }
-                                                        
-                                                        e.handleProductClicked(t);
-
-
-                                                Object(v.jsxs)("div", {
+                                                        console.log(t), e.handleProductClicked(t)
+                                                    }
+                                                })
+                                            }), Object(v.jsx)("div", {
+                                                style: {
+                                                    position: "absolute",
+                                                    top: 0,
+                                                    left: 0,
+                                                    width: "100%",
+                                                    height: "100%",
+                                                    background: "#00000088",
+                                                    color: "white",
+                                                    display: s ? "flex" : "none",
+                                                    alignItems: "center",
+                                                    justifyContent: "center"
+                                                },
+                                                children: Object(v.jsx)("span", {
+                                                    children: "loading..."
+                                                })
+                                            })]
+                                        }), Object(v.jsxs)("div", {
                                             className: "right-container ".concat(l ? "opened" : ""),
                                             children: [Object(v.jsxs)("div", {
                                                 className: "product-info-container",
