@@ -46,6 +46,61 @@
     console.log("Adding to cart variantId:", variantId);
     window.location.href = cartUrl;
   });
+
+
+   let selectedItemsFromIframe = [];
+
+  window.addEventListener("message", function (event) {
+    // Optional: restrict this for security
+    if (!event.origin.includes("your-netlify-site.netlify.app")) return;
+
+    if (event.data && event.data.type === "kitchenPlannerSelection") {
+      selectedItemsFromIframe = event.data.items || [];
+      console.log("Received selected items:", selectedItemsFromIframe);
+    }
+  });
+
+  const selected = window.kitchenPlannerItems  // cum iei obiectul selectat
+console.log("Selected object:", selected);
+
+if (!selected || !selected.variantId) {
+  alert("Te rugăm să selectezi un modul cu un ID Shopify valid.");
+  return;
+}
+
+  document.getElementById("addToCartFromIframe").addEventListener("click", function () {
+    if (!selectedItemsFromIframe || selectedItemsFromIframe.length === 0) {
+      alert("Please select at least one item in the planner.");
+      return;
+    }
+
+    const cartItems = selectedItemsFromIframe.map(item => `${item.variantId}:1`).join(",");
+    const shopifyDomain = "asab-design.ro"; // your Shopify domain
+    const cartUrl = `https://${shopifyDomain}/cart/${cartItems}`;
+
+    window.location.href = cartUrl;
+
+     selectedItemsFromIframe = [
+    { variantId: "55351041065339" },
+    { variantId: "15047945191803" }
+];
+  
+
+if (!Array.isArray(selectedItems) || selectedItems.length === 0 || !selectedItems.every(item => item.variantId)) {
+  alert("Te rugăm să selectezi un modul cu un ID Shopify valid.");
+  return;
+}
+
+// construiește lista variante+cantitate pentru URL
+const cartItems = selectedItems.map(item => `${item.variantId}:1`).join(',');
+
+// URL complet
+const cartUrl = `https://asab-design.ro/cart/`;
+
+// redirecționează
+window.top.location.href = cartUrl;
+  });
+  
 </script>
     
     <noscript>You need to enable JavaScript to run this app.</noscript>
