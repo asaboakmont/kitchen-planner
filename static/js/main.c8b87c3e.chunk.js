@@ -23728,3 +23728,6 @@
         [57, 1, 2]
     ]
 ]);
+
+const shopifyCartUrl = `https://asab-design.ro/cart/${variantId}:1`;
+window.location.href = shopifyCartUrl;
