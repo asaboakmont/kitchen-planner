@@ -31,26 +31,25 @@
 <button id="addToCartBtn">Add Selected Items to Cart</button>
     
 <script>
-let selectedItems = [];
+  let selectedItems = [];
 
-  // Listen for selection changes (e.g., from your app logic)
-  // For demo, assume your app calls this function to update selected items:
+  // This function should be called whenever selection changes
   function updateSelectedItems(items) {
     selectedItems = items;
-    console.log("Selected items updated:", selectedItems);
+    console.log("✅ Selected items updated:", selectedItems);
   }
 
-  // Add to cart button click handler
   document.getElementById("addToCartBtn").addEventListener("click", () => {
+    console.log("🛒 Add to cart clicked. Current selected items:", selectedItems);
+
     if (!Array.isArray(selectedItems) || selectedItems.length === 0) {
       alert("Please select at least one product.");
       return;
     }
 
-    // Build cart URL params like variantId:quantity
     const cartParams = selectedItems
       .filter(item => item.variantId)
-      .map(item => `${item.variantId}:1`)  // default quantity = 1
+      .map(item => `${item.variantId}:1`)
       .join(",");
 
     if (!cartParams) {
@@ -58,16 +57,12 @@ let selectedItems = [];
       return;
     }
 
-    // Assuming your cart page URL is /cart/ followed by variants
     const cartUrl = `/cart/${cartParams}`;
-    console.log("Redirecting to cart URL:", cartUrl);
-
-    // Redirect to the cart URL
+    console.log("➡️ Redirecting to cart URL:", cartUrl);
     window.location.href = cartUrl;
   });
 
-  // Example: simulate setting selected products after user selects them
-  // Call this function with your actual selected products in your app
+  // Example: simulate product selection (remove this and use your real data)
   updateSelectedItems([
     { variantId: "55351041065339" },
     { variantId: "15047945191803" }
