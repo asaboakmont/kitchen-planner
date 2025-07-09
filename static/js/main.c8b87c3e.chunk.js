@@ -23650,7 +23650,7 @@
                                                         e.handleProductClicked(t);
 
 
-                                            }), Object(v.jsx)("div", {
+                                                Object(v.jsx)("div", {
                                                 style: {
                                                     position: "absolute",
                                                     top: 0,
